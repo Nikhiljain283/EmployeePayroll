@@ -19,6 +19,12 @@ public class EmployeeModel {
 	String profilePic;
 	LocalDate date;
 	
+	
+	
+	public EmployeeModel() {
+		super();
+		
+	}
 
 	public EmployeeModel(int empId, String fullName, String gender, String department, String salary, String profilePic,
 			LocalDate date) {

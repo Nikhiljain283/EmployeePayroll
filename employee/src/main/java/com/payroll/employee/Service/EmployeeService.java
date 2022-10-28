@@ -33,4 +33,23 @@ public class EmployeeService implements IEmployeeService {
 		return repo.findAll();
 	}
 
+	@Override
+	public EmployeeModel DbDetailId(int id) {
+		return repo.findById(id).get();
+	}
+
+	@Override
+	public void deleteByid(int id) {
+		
+		 repo.deleteById(id);
+	}
+
+	@Override
+	public EmployeeModel updateId(EmployeeModel model, int id) {
+		EmployeeModel existingData = repo.findById(id).get();
+		existingData.setFullName(model.getFullName());
+		EmployeeModel res = repo.save(existingData);
+		return res;
+	}
+
 }

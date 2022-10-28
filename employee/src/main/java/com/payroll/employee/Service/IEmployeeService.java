@@ -14,4 +14,10 @@ public interface IEmployeeService {
 
 	public List<EmployeeModel> DbDetail();
 
+	public EmployeeModel DbDetailId(int id);
+
+	public void deleteByid(int id);
+
+	public EmployeeModel updateId(EmployeeModel model, int id);
+
 }
