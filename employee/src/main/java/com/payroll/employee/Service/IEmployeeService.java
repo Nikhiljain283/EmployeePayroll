@@ -3,6 +3,7 @@ package com.payroll.employee.Service;
 import java.util.List;
 
 import com.payroll.employee.Model.EmployeeModel;
+import com.payroll.employee.dto.EmployeeDTO;
 
 public interface IEmployeeService {
 
@@ -10,7 +11,7 @@ public interface IEmployeeService {
 
 	public String getBody(EmployeeModel data);
 
-	public EmployeeModel getEmpDetail(EmployeeModel data);
+	public EmployeeModel getEmpDetail(EmployeeDTO data);
 
 	public List<EmployeeModel> DbDetail();
 

@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import com.payroll.employee.Model.EmployeeModel;
 import com.payroll.employee.Repository.EmployeeRepository;
+import com.payroll.employee.dto.EmployeeDTO;
 
 @Service
 public class EmployeeService implements IEmployeeService {
@@ -23,7 +24,7 @@ public class EmployeeService implements IEmployeeService {
 		return response1;
 	}
 
-	public EmployeeModel getEmpDetail(EmployeeModel data) {
+	public EmployeeModel getEmpDetail(EmployeeDTO data) {
 		EmployeeModel model = new EmployeeModel(data);
 		repo.save(model);
 		return model;
@@ -48,6 +49,7 @@ public class EmployeeService implements IEmployeeService {
 	public EmployeeModel updateId(EmployeeModel model, int id) {
 		EmployeeModel existingData = repo.findById(id).get();
 		existingData.setFullName(model.getFullName());
+		EmployeeModel abc = new EmployeeModel();
 		EmployeeModel res = repo.save(existingData);
 		return res;
 	}

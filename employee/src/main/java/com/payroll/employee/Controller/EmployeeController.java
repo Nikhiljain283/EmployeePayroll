@@ -2,6 +2,8 @@ package com.payroll.employee.Controller;
 
 import java.util.List;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -15,6 +17,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.payroll.employee.Model.EmployeeModel;
 import com.payroll.employee.Service.EmployeeService;
 import com.payroll.employee.Service.IEmployeeService;
+import com.payroll.employee.dto.EmployeeDTO;
 
 @RestController
 public class EmployeeController {
@@ -40,7 +43,7 @@ public class EmployeeController {
 	}
 
 	@PostMapping("addDb")
-	public EmployeeModel empDetail(@RequestBody EmployeeModel data) {
+	public EmployeeModel empDetail(@RequestBody @Valid EmployeeDTO data) {
 		EmployeeModel response = service.getEmpDetail(data);
 		return response;
 	}

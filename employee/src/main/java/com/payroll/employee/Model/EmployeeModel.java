@@ -6,7 +6,14 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 
+import com.payroll.employee.dto.EmployeeDTO;
+
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
 @Entity
+@Data
+@NoArgsConstructor
 public class EmployeeModel {
 
 	@Id
@@ -19,12 +26,6 @@ public class EmployeeModel {
 	String profilePic;
 	LocalDate date;
 	
-	
-	
-	public EmployeeModel() {
-		super();
-		
-	}
 
 	public EmployeeModel(int empId, String fullName, String gender, String department, String salary, String profilePic,
 			LocalDate date) {
@@ -38,7 +39,7 @@ public class EmployeeModel {
 		this.date = date;
 	}
 
-	public EmployeeModel(EmployeeModel data) {
+	public EmployeeModel(EmployeeDTO data) {
 		super();
 		this.empId = data.getEmpId();
 		this.fullName = data.getFullName();
@@ -48,68 +49,7 @@ public class EmployeeModel {
 		this.profilePic = data.getProfilePic();
 		this.date = data.getDate();
 		
+		
 	}
 
-	public int getEmpId() {
-		return empId;
-	}
-
-	public void setEmpId(int empId) {
-		this.empId = empId;
-	}
-
-	public String getFullName() {
-		return fullName;
-	}
-
-	public void setFullName(String fullName) {
-		this.fullName = fullName;
-	}
-
-	public String getGender() {
-		return gender;
-	}
-
-	public void setGender(String gender) {
-		this.gender = gender;
-	}
-
-	public String getDepartment() {
-		return department;
-	}
-
-	public void setDepartment(String department) {
-		this.department = department;
-	}
-
-	public String getSalary() {
-		return salary;
-	}
-
-	public void setSalary(String salary) {
-		this.salary = salary;
-	}
-
-	public String getProfilePic() {
-		return profilePic;
-	}
-
-	public void setProfilePic(String profilePic) {
-		this.profilePic = profilePic;
-	}
-
-	public LocalDate getDate() {
-		return date;
-	}
-
-	public void setDate(LocalDate date) {
-		this.date = date;
-	}
-
-	@Override
-	public String toString() {
-		return "EmployeeModel [empId=" + empId + ", fullName=" + fullName + ", gender=" + gender + ", department="
-				+ department + ", salary=" + salary + ", profilePic=" + profilePic + ", date=" + date + "]";
-	}
-	
 }
