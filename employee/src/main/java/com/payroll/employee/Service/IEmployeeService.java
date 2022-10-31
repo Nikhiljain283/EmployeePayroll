@@ -9,7 +9,7 @@ public interface IEmployeeService {
 
 	public String getLastName();
 
-	public String getBody(EmployeeModel data);
+	public EmployeeModel addBody(EmployeeDTO data);
 
 	public EmployeeModel getEmpDetail(EmployeeDTO data);
 
@@ -19,6 +19,6 @@ public interface IEmployeeService {
 
 	public void deleteByid(int id);
 
-	public EmployeeModel updateId(EmployeeModel model, int id);
+	EmployeeModel updateId(EmployeeModel model, int id);
 
 }

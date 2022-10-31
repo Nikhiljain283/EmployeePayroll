@@ -1,10 +1,13 @@
 package com.payroll.employee.Controller;
+import org.springframework.http.ResponseEntity;
 
 import java.util.List;
 
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -18,6 +21,7 @@ import com.payroll.employee.Model.EmployeeModel;
 import com.payroll.employee.Service.EmployeeService;
 import com.payroll.employee.Service.IEmployeeService;
 import com.payroll.employee.dto.EmployeeDTO;
+import com.payroll.employee.dto.ResponseDTO;
 
 @RestController
 public class EmployeeController {
@@ -37,15 +41,17 @@ public class EmployeeController {
 	}
 
 	@PostMapping("/addBody")
-	public String addingBody(@RequestBody EmployeeModel data) {
-		String response = service.getBody(data);
-		return response;
+	public ResponseEntity<ResponseDTO> addingBody(@RequestBody EmployeeDTO data) {
+		EmployeeModel response = service.addBody(data);
+		ResponseDTO responsedto = new ResponseDTO("data is added", response);
+		return new ResponseEntity<>(responsedto, HttpStatus.CREATED);
 	}
 
 	@PostMapping("addDb")
-	public EmployeeModel empDetail(@RequestBody @Valid EmployeeDTO data) {
+	public ResponseEntity<ResponseDTO> empDetail(@RequestBody @Valid EmployeeDTO data) {
 		EmployeeModel response = service.getEmpDetail(data);
-		return response;
+		ResponseDTO responsedto = new ResponseDTO("added data", "response");
+		return new ResponseEntity(responsedto, HttpStatus.CREATED);
 	}
 
 	@GetMapping("/getDb")
@@ -55,9 +61,10 @@ public class EmployeeController {
 	}
 
 	@GetMapping("/getDb/{id}")
-	public EmployeeModel getempDetailDbId(@PathVariable int id) {
+	public ResponseEntity<EmployeeDTO> getempDetailDbId(@PathVariable int id) {
 		EmployeeModel res = service.DbDetailId(id);
-		return res;
+		ResponseDTO responsedto = new ResponseDTO("Id found", "res");
+		return new ResponseEntity(responsedto, HttpStatus.OK);
 	}
 
 	@DeleteMapping("deleteEmp/{id}")

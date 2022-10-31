@@ -19,8 +19,9 @@ public class EmployeeService implements IEmployeeService {
 		return "jain";
 	}
 
-	public String getBody(EmployeeModel data) {
-		String response1 = data.getFullName() + " gender is " + data.getGender() + " salary is " + data.getSalary();
+	public EmployeeModel addBody(EmployeeDTO empdata) {
+		EmployeeModel response1 = new EmployeeModel(empdata);
+		repo.save(response1);
 		return response1;
 	}
 
@@ -42,7 +43,8 @@ public class EmployeeService implements IEmployeeService {
 	@Override
 	public void deleteByid(int id) {
 		
-		 repo.deleteById(id);
+	 repo.deleteById(id);
+		
 	}
 
 	@Override
@@ -54,4 +56,5 @@ public class EmployeeService implements IEmployeeService {
 		return res;
 	}
 
+	
 }
