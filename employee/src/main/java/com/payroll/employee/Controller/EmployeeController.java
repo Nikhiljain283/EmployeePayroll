@@ -65,8 +65,18 @@ public class EmployeeController {
 		EmployeeModel res = service.DbDetailId(id);
 		ResponseDTO responsedto = new ResponseDTO("Id found", "res");
 		return new ResponseEntity(responsedto, HttpStatus.OK);
+		
 	}
-
+	
+	@GetMapping("/department/{department}")
+	public ResponseEntity<EmployeeDTO> getempDetailDbDpartment(@PathVariable String department) {
+		List<EmployeeModel> res = service.getEmployeeByDepartment(department);
+		ResponseDTO responsedto = new ResponseDTO("Get call is successfull", "res");
+		return new ResponseEntity(responsedto, HttpStatus.OK);
+		
+	}
+	
+	
 	@DeleteMapping("deleteEmp/{id}")
 	public void delByid(@PathVariable int id) {
 		service.deleteByid(id);

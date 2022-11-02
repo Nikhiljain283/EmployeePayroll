@@ -42,19 +42,22 @@ public class EmployeeService implements IEmployeeService {
 
 	@Override
 	public void deleteByid(int id) {
-		
-	 repo.deleteById(id);
-		
+
+		repo.deleteById(id);
+
 	}
 
-	@Override
 	public EmployeeModel updateId(EmployeeModel model, int id) {
 		EmployeeModel existingData = repo.findById(id).get();
 		existingData.setFullName(model.getFullName());
-		EmployeeModel abc = new EmployeeModel();
+		// EmployeeModel abc = new EmployeeModel();
 		EmployeeModel res = repo.save(existingData);
 		return res;
 	}
 
-	
+	public List<EmployeeModel> getEmployeeByDepartment(String department) {
+		return repo.findByDepartment(department);
+
+	}
+
 }

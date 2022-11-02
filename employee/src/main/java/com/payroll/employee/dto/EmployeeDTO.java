@@ -1,6 +1,7 @@
 package com.payroll.employee.dto;
 
 import java.time.LocalDate;
+import java.util.List;
 
 import javax.validation.constraints.Pattern;
 
@@ -15,7 +16,7 @@ public class EmployeeDTO {
 	@Pattern(regexp = "^[A-z]{1}[a-z]{3,}[ ][a-z]{3,}$", message = "Invalid data")
 	private String fullName;
 	private String gender;
-	private String department;
+	private List<String> department;
 	private String salary;
 	private String profilePic;
 	private LocalDate date;

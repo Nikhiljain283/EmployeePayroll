@@ -20,5 +20,7 @@ public interface IEmployeeService {
 	public void deleteByid(int id);
 
 	EmployeeModel updateId(EmployeeModel model, int id);
+	
+	List<EmployeeModel> getEmployeeByDepartment(String department);
 
 }

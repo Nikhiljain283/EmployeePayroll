@@ -1,11 +1,16 @@
 package com.payroll.employee.Model;
 
 import java.time.LocalDate;
+import java.util.List;
 
+import javax.persistence.CollectionTable;
+import javax.persistence.Column;
+import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 
 import com.payroll.employee.dto.EmployeeDTO;
 
@@ -22,22 +27,14 @@ public class EmployeeModel {
 	private int empId;
 	private String fullName;
 	private String gender;
-	private String department;
 	private String salary;
 	private String profilePic;
 	private LocalDate date;
 	
-
-//	public EmployeeModel(int empId, String fullName, String gender, String department, String salary, String profilePic,
-//			LocalDate date) {
-//		this.empId = empId;
-//		this.fullName = fullName;
-//		this.gender = gender;
-//		this.department = department;
-//		this.salary = salary;
-//		this.profilePic = profilePic;
-//		this.date = date;
-//	}
+	@ElementCollection
+	@CollectionTable(name = "employee_department", joinColumns = @JoinColumn(name = "empId"))
+	@Column(name = "department")
+	private List<String> department;
 
 	public EmployeeModel(EmployeeDTO data) {
 	
